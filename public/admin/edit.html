@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Редактирование формы — Form Builder</title>
+  <link rel="stylesheet" href="/admin/admin.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/admin">Form Builder</a>
+    <span class="topbar__hint" id="form-status">—</span>
+    <div class="topbar__actions">
+      <span id="save-hint" class="save-hint" hidden>Есть несохранённые изменения</span>
+      <a id="preview-link" class="btn btn--sm" target="_blank" rel="noopener">Открыть как студент</a>
+      <button id="publish-btn" class="btn btn--sm btn--primary">Опубликовать</button>
+      <button id="save-btn" class="btn btn--primary">Сохранить</button>
+    </div>
+  </header>
+
+  <main class="page page--editor">
+    <section class="panel">
+      <label class="field">
+        <span class="field__label">Название формы</span>
+        <input id="form-title" class="input" type="text" maxlength="200" placeholder="Например: Стажировка backend, лето 2026">
+      </label>
+      <label class="field">
+        <span class="field__label">Описание для студентов</span>
+        <textarea id="form-desc" class="input" rows="2" maxlength="1000" placeholder="Коротко расскажите, на что откликаются студенты"></textarea>
+      </label>
+      <div class="field">
+        <span class="field__label">Ссылка на форму</span>
+        <code id="form-link" class="slug">—</code>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel__head">
+        <h2>Вопросы</h2>
+        <div class="add-field">
+          <select id="add-type" class="input input--sm">
+            <option value="text">Короткий ответ</option>
+            <option value="textarea">Развёрнутый ответ</option>
+            <option value="email">Email</option>
+            <option value="number">Число</option>
+            <option value="date">Дата</option>
+            <option value="select">Выпадающий список</option>
+            <option value="radio">Один из списка</option>
+            <option value="checkbox">Несколько из списка</option>
+          </select>
+          <button id="add-field-btn" class="btn btn--primary btn--sm">Добавить</button>
+        </div>
+      </div>
+
+      <div id="fields-list" class="fields"></div>
+      <p id="no-fields" class="empty">Пока нет ни одного вопроса. Выберите тип и нажмите «Добавить».</p>
+    </section>
+
+    <p id="error-box" class="error-box" hidden></p>
+  </main>
+
+  <template id="field-template">
+    <div class="field-row">
+      <div class="field-row__main">
+        <span class="field-row__type"></span>
+        <span class="field-row__label"></span>
+        <span class="field-row__options"></span>
+      </div>
+      <div class="field-row__actions">
+        <button class="btn btn--sm move-up" title="Переместить вверх">↑</button>
+        <button class="btn btn--sm move-down" title="Переместить вниз">↓</button>
+        <button class="btn btn--sm edit">Изменить</button>
+        <button class="btn btn--sm btn--danger delete">✕</button>
+      </div>
+    </div>
+  </template>
+
+  <dialog id="field-dialog">
+    <form method="dialog" class="dialog-form" id="field-form">
+      <h3 id="dialog-title">Вопрос</h3>
+      <label class="field">
+        <span class="field__label">Текст вопроса</span>
+        <input id="d-label" class="input" type="text" maxlength="300" required>
+      </label>
+      <label class="field">
+        <span class="field__label">Подсказка под полем (необязательно)</span>
+        <input id="d-help" class="input" type="text" maxlength="300">
+      </label>
+      <label class="check">
+        <input id="d-required" type="checkbox">
+        <span>Обязательный вопрос</span>
+      </label>
+      <div class="field" id="d-options-wrap" hidden>
+        <span class="field__label">Варианты ответа (по одному в строке)</span>
+        <textarea id="d-options" class="input" rows="5"></textarea>
+      </div>
+      <div class="dialog-actions">
+        <button type="button" id="d-cancel" class="btn">Отмена</button>
+        <button type="button" id="d-save" class="btn btn--primary">Готово</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="/admin/api.js"></script>
+  <script src="/admin/builder.js"></script>
+</body>
+</html>

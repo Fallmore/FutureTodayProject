@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Формы — Form Builder</title>
+  <link rel="stylesheet" href="/admin/admin.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/admin">Form Builder</a>
+    <span class="topbar__hint">Конструктор форм отклика</span>
+    <button id="create-btn" class="btn btn--primary">Создать форму</button>
+  </header>
+
+  <main class="page">
+    <h1>Мои формы</h1>
+    <div id="forms-list" class="cards" aria-live="polite"></div>
+    <p id="empty-state" class="empty" hidden>
+      Форм пока нет. Нажмите «Создать форму», чтобы собрать первую.
+    </p>
+  </main>
+
+  <template id="card-template">
+    <article class="card">
+      <div class="card__head">
+        <h2 class="card__title"></h2>
+        <span class="badge"></span>
+      </div>
+      <p class="card__desc"></p>
+      <div class="card__stats"></div>
+      <div class="card__actions">
+        <a class="btn btn--primary btn--sm edit-link">Редактировать</a>
+        <a class="btn btn--sm responses-link">Ответы</a>
+        <button class="btn btn--sm publish-btn"></button>
+        <button class="btn btn--sm copy-btn">Копировать ссылку</button>
+        <button class="btn btn--sm btn--danger delete-btn">Удалить</button>
+      </div>
+      <div class="card__link" hidden></div>
+    </article>
+  </template>
+
+  <script src="/admin/api.js"></script>
+  <script src="/admin/app.js"></script>
+</body>
+</html>

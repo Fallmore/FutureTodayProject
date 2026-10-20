@@ -1,0 +1,16 @@
+{
+  "name": "form-builder",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Сервис конструктора форм отклика для стажировок и мероприятий",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

@@ -1,0 +1,101 @@
+:root {
+  --bg: #f5f6f8;
+  --panel: #ffffff;
+  --border: #e3e6ea;
+  --text: #1c2127;
+  --muted: #6b7480;
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --danger: #dc2626;
+  --radius: 10px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.form-page {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 4rem;
+}
+
+.state { text-align: center; color: var(--muted); padding: 3rem 0; }
+.state h1 { color: var(--text); }
+.state--success h1 { color: #16a34a; }
+
+.form-head { margin-bottom: 1.5rem; }
+.form-head h1 { font-size: 1.5rem; margin: 0 0 0.5rem; }
+.form-desc { color: var(--muted); margin: 0; }
+
+.field { margin-bottom: 1.35rem; }
+
+.field__label { display: block; font-weight: 600; margin-bottom: 0.35rem; }
+.required-star { color: var(--danger); }
+
+.field__help { color: var(--muted); font-size: 0.85rem; margin: 0.3rem 0 0; }
+
+.input {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font: inherit;
+  background: #fff;
+}
+
+.input:focus { outline: 2px solid var(--primary); outline-offset: -1px; }
+
+.field--invalid .input { border-color: var(--danger); }
+
+.field__error { color: var(--danger); font-size: 0.85rem; margin: 0.3rem 0 0; }
+
+.form-error {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #991b1b;
+  padding: 0.6rem 0.9rem;
+  border-radius: 8px;
+}
+
+.group { display: grid; gap: 0.4rem; }
+
+.group__option {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.group__option:hover { border-color: var(--primary); }
+.group__option input { accent-color: var(--primary); }
+
+.btn {
+  font: inherit;
+  padding: 0.65rem 1.4rem;
+  border: 1px solid var(--primary);
+  border-radius: 8px;
+  background: var(--primary);
+  color: #fff;
+  cursor: pointer;
+}
+
+.btn:hover { background: var(--primary-dark); }
+.btn[disabled] { opacity: 0.6; cursor: not-allowed; }
+
+.btn--submit { width: 100%; margin-top: 0.5rem; }
+
+@media (max-width: 480px) {
+  .form-page { padding-top: 1.5rem; }
+}
